@@ -1228,6 +1228,7 @@ export namespace Prisma {
     status: $Enums.User_Status | null
     isDeleted: boolean | null
     deletedAt: Date | null
+    needsPasswordChange: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1242,6 +1243,7 @@ export namespace Prisma {
     status: $Enums.User_Status | null
     isDeleted: boolean | null
     deletedAt: Date | null
+    needsPasswordChange: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1256,6 +1258,7 @@ export namespace Prisma {
     status: number
     isDeleted: number
     deletedAt: number
+    needsPasswordChange: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1272,6 +1275,7 @@ export namespace Prisma {
     status?: true
     isDeleted?: true
     deletedAt?: true
+    needsPasswordChange?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1286,6 +1290,7 @@ export namespace Prisma {
     status?: true
     isDeleted?: true
     deletedAt?: true
+    needsPasswordChange?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1300,6 +1305,7 @@ export namespace Prisma {
     status?: true
     isDeleted?: true
     deletedAt?: true
+    needsPasswordChange?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1387,6 +1393,7 @@ export namespace Prisma {
     status: $Enums.User_Status
     isDeleted: boolean
     deletedAt: Date
+    needsPasswordChange: boolean
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1418,6 +1425,7 @@ export namespace Prisma {
     status?: boolean
     isDeleted?: boolean
     deletedAt?: boolean
+    needsPasswordChange?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -1435,6 +1443,7 @@ export namespace Prisma {
     status?: boolean
     isDeleted?: boolean
     deletedAt?: boolean
+    needsPasswordChange?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1449,6 +1458,7 @@ export namespace Prisma {
     status?: boolean
     isDeleted?: boolean
     deletedAt?: boolean
+    needsPasswordChange?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1463,11 +1473,12 @@ export namespace Prisma {
     status?: boolean
     isDeleted?: boolean
     deletedAt?: boolean
+    needsPasswordChange?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "status" | "isDeleted" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "status" | "isDeleted" | "deletedAt" | "needsPasswordChange" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -1492,6 +1503,7 @@ export namespace Prisma {
       status: $Enums.User_Status
       isDeleted: boolean
       deletedAt: Date
+      needsPasswordChange: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1928,6 +1940,7 @@ export namespace Prisma {
     readonly status: FieldRef<"User", 'User_Status'>
     readonly isDeleted: FieldRef<"User", 'Boolean'>
     readonly deletedAt: FieldRef<"User", 'DateTime'>
+    readonly needsPasswordChange: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -5695,6 +5708,7 @@ export namespace Prisma {
     status: 'status',
     isDeleted: 'isDeleted',
     deletedAt: 'deletedAt',
+    needsPasswordChange: 'needsPasswordChange',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5869,6 +5883,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFilter<"User"> | $Enums.User_Status
     isDeleted?: BoolFilter<"User"> | boolean
     deletedAt?: DateTimeFilter<"User"> | Date | string
+    needsPasswordChange?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
@@ -5885,6 +5900,7 @@ export namespace Prisma {
     status?: SortOrder
     isDeleted?: SortOrder
     deletedAt?: SortOrder
+    needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     sessions?: SessionOrderByRelationAggregateInput
@@ -5904,6 +5920,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFilter<"User"> | $Enums.User_Status
     isDeleted?: BoolFilter<"User"> | boolean
     deletedAt?: DateTimeFilter<"User"> | Date | string
+    needsPasswordChange?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     sessions?: SessionListRelationFilter
@@ -5920,6 +5937,7 @@ export namespace Prisma {
     status?: SortOrder
     isDeleted?: SortOrder
     deletedAt?: SortOrder
+    needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -5940,6 +5958,7 @@ export namespace Prisma {
     status?: EnumUser_StatusWithAggregatesFilter<"User"> | $Enums.User_Status
     isDeleted?: BoolWithAggregatesFilter<"User"> | boolean
     deletedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    needsPasswordChange?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6176,6 +6195,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -6192,6 +6212,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -6208,6 +6229,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -6224,6 +6246,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -6240,6 +6263,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6254,6 +6278,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6268,6 +6293,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6617,6 +6643,7 @@ export namespace Prisma {
     status?: SortOrder
     isDeleted?: SortOrder
     deletedAt?: SortOrder
+    needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6631,6 +6658,7 @@ export namespace Prisma {
     status?: SortOrder
     isDeleted?: SortOrder
     deletedAt?: SortOrder
+    needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6645,6 +6673,7 @@ export namespace Prisma {
     status?: SortOrder
     isDeleted?: SortOrder
     deletedAt?: SortOrder
+    needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7331,6 +7360,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -7346,6 +7376,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -7377,6 +7408,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -7392,6 +7424,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -7407,6 +7440,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -7422,6 +7456,7 @@ export namespace Prisma {
     status?: $Enums.User_Status
     isDeleted?: boolean
     deletedAt: Date | string
+    needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -7453,6 +7488,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -7468,6 +7504,7 @@ export namespace Prisma {
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput

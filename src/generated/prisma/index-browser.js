@@ -130,6 +130,7 @@ exports.Prisma.UserScalarFieldEnum = {
   status: 'status',
   isDeleted: 'isDeleted',
   deletedAt: 'deletedAt',
+  needsPasswordChange: 'needsPasswordChange',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

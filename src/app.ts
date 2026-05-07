@@ -19,7 +19,7 @@ app.use(cors({
   credentials: true,
 }));
 app.use(cookieParser());
-// app.use(pinoHttp());
+app.use(pinoHttp());
 
 // Better Auth Handler (Must be before express.json())
 // app.all('/api/v1/auth/*', toNodeHandler(auth));
@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API Routes
-// app.use('/api/v1', globalRouter);
+app.use('/api/v1', globalRouter);
 
 // Health Check
 app.get('/', (req: Request, res: Response) => {

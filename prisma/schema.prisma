@@ -22,6 +22,7 @@ model User {
   status        User_Status @default(ACTIVE)
   isDeleted     Boolean   @default(false)
   deletedAt     DateTime
+  needsPasswordChange Boolean @default(false)
   createdAt     DateTime
   updatedAt     DateTime
   sessions      Session[]

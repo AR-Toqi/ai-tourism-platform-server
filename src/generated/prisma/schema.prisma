@@ -13,19 +13,20 @@ datasource db {
 }
 
 model User {
-  id            String      @id
-  name          String
-  email         String      @unique
-  emailVerified Boolean
-  image         String?
-  role          user_role   @default(USER)
-  status        User_Status @default(ACTIVE)
-  isDeleted     Boolean     @default(false)
-  deletedAt     DateTime
-  createdAt     DateTime
-  updatedAt     DateTime
-  sessions      Session[]
-  accounts      Account[]
+  id                  String      @id
+  name                String
+  email               String      @unique
+  emailVerified       Boolean
+  image               String?
+  role                user_role   @default(USER)
+  status              User_Status @default(ACTIVE)
+  isDeleted           Boolean     @default(false)
+  deletedAt           DateTime
+  needsPasswordChange Boolean     @default(false)
+  createdAt           DateTime
+  updatedAt           DateTime
+  sessions            Session[]
+  accounts            Account[]
 
   @@map("user")
 }
