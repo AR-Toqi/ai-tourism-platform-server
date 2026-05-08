@@ -57,9 +57,9 @@ const login = async (payload: ILogin) => {
     throw new AppError(httpStatus.UNAUTHORIZED, 'User is deleted');
   }
 
-  // if (!result.user.emailVerified) {
-  //   throw new ApiError(httpStatus.UNAUTHORIZED, 'Please verify your email');
-  // }
+  if (!result.user.emailVerified) {
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Please verify your email');
+  }
 
   const jwtPayload = {
     userId: result.user.id,

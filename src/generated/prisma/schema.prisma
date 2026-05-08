@@ -21,7 +21,7 @@ model User {
   role                user_role   @default(USER)
   status              User_Status @default(ACTIVE)
   isDeleted           Boolean     @default(false)
-  deletedAt           DateTime
+  deletedAt           DateTime?
   needsPasswordChange Boolean     @default(false)
   createdAt           DateTime
   updatedAt           DateTime

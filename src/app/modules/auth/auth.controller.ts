@@ -95,12 +95,18 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
 });
 
 const logoutUser = catchAsync(async (req: Request, res: Response) => {
-  const sessionToken = CookieUtils.getCookie(req, 'better-auth.session_token');
-  const result = await AuthService.logoutUser(sessionToken);
+  let sessionToken = CookieUtils.getCookie(req, 'better-auth.session_token');
+
+  // If not in cookie, try to get from Authorization header
+  if (!sessionToken && req.headers.authorization?.startsWith('Bearer ')) {
+    sessionToken = req.headers.authorization.split(' ')[1] || '';
+  }
 
   if (!sessionToken) {
     throw new AppError(httpStatus.UNAUTHORIZED, 'Session token not found');
   }
+
+  const result = await AuthService.logoutUser(sessionToken);
 
   CookieUtils.clearCookie(res, 'accessToken');
   CookieUtils.clearCookie(res, 'refreshToken');

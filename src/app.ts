@@ -19,7 +19,16 @@ app.use(cors({
   credentials: true,
 }));
 app.use(cookieParser());
-app.use(pinoHttp());
+app.use(pinoHttp({
+  ...(envConfig.NODE_ENV === 'development' && {
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        colorize: true,
+      },
+    },
+  }),
+}));
 
 // Better Auth Handler (Must be before express.json())
 // app.all('/api/v1/auth/*', toNodeHandler(auth));

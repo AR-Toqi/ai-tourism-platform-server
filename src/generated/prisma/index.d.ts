@@ -1392,7 +1392,7 @@ export namespace Prisma {
     role: $Enums.user_role
     status: $Enums.User_Status
     isDeleted: boolean
-    deletedAt: Date
+    deletedAt: Date | null
     needsPasswordChange: boolean
     createdAt: Date
     updatedAt: Date
@@ -1502,7 +1502,7 @@ export namespace Prisma {
       role: $Enums.user_role
       status: $Enums.User_Status
       isDeleted: boolean
-      deletedAt: Date
+      deletedAt: Date | null
       needsPasswordChange: boolean
       createdAt: Date
       updatedAt: Date
@@ -5882,7 +5882,7 @@ export namespace Prisma {
     role?: Enumuser_roleFilter<"User"> | $Enums.user_role
     status?: EnumUser_StatusFilter<"User"> | $Enums.User_Status
     isDeleted?: BoolFilter<"User"> | boolean
-    deletedAt?: DateTimeFilter<"User"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     needsPasswordChange?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -5899,7 +5899,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     isDeleted?: SortOrder
-    deletedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5919,7 +5919,7 @@ export namespace Prisma {
     role?: Enumuser_roleFilter<"User"> | $Enums.user_role
     status?: EnumUser_StatusFilter<"User"> | $Enums.User_Status
     isDeleted?: BoolFilter<"User"> | boolean
-    deletedAt?: DateTimeFilter<"User"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     needsPasswordChange?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
@@ -5936,7 +5936,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     isDeleted?: SortOrder
-    deletedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     needsPasswordChange?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5957,7 +5957,7 @@ export namespace Prisma {
     role?: Enumuser_roleWithAggregatesFilter<"User"> | $Enums.user_role
     status?: EnumUser_StatusWithAggregatesFilter<"User"> | $Enums.User_Status
     isDeleted?: BoolWithAggregatesFilter<"User"> | boolean
-    deletedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     needsPasswordChange?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -6194,7 +6194,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -6211,7 +6211,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -6228,7 +6228,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6245,7 +6245,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6262,7 +6262,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -6277,7 +6277,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6292,7 +6292,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6597,6 +6597,17 @@ export namespace Prisma {
     not?: NestedEnumUser_StatusFilter<$PrismaModel> | $Enums.User_Status
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -6742,6 +6753,20 @@ export namespace Prisma {
     _max?: NestedEnumUser_StatusFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -6794,17 +6819,6 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type AccountCountOrderByAggregateInput = {
     id?: SortOrder
     accountId?: SortOrder
@@ -6851,20 +6865,6 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type VerificationCountOrderByAggregateInput = {
@@ -6940,6 +6940,10 @@ export namespace Prisma {
 
   export type EnumUser_StatusFieldUpdateOperationsInput = {
     set?: $Enums.User_Status
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -7022,10 +7026,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -7079,6 +7079,17 @@ export namespace Prisma {
     in?: $Enums.User_Status[] | ListEnumUser_StatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.User_Status[] | ListEnumUser_StatusFieldRefInput<$PrismaModel>
     not?: NestedEnumUser_StatusFilter<$PrismaModel> | $Enums.User_Status
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -7176,31 +7187,6 @@ export namespace Prisma {
     _max?: NestedEnumUser_StatusFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -7213,6 +7199,20 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -7359,7 +7359,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -7375,7 +7375,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -7407,7 +7407,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7423,7 +7423,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7439,7 +7439,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -7455,7 +7455,7 @@ export namespace Prisma {
     role?: $Enums.user_role
     status?: $Enums.User_Status
     isDeleted?: boolean
-    deletedAt: Date | string
+    deletedAt?: Date | string | null
     needsPasswordChange?: boolean
     createdAt: Date | string
     updatedAt: Date | string
@@ -7487,7 +7487,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7503,7 +7503,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     status?: EnumUser_StatusFieldUpdateOperationsInput | $Enums.User_Status
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    deletedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     needsPasswordChange?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
