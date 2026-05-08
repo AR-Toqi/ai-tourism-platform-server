@@ -171,9 +171,130 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.DestinationScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  description: 'description',
+  location: 'location',
+  country: 'country',
+  category: 'category',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  budgetMin: 'budgetMin',
+  budgetMax: 'budgetMax',
+  avgRating: 'avgRating',
+  reviewCount: 'reviewCount',
+  coverImage: 'coverImage',
+  isPublished: 'isPublished',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DestinationImageScalarFieldEnum = {
+  id: 'id',
+  destinationId: 'destinationId',
+  url: 'url',
+  altText: 'altText',
+  order: 'order',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  destinationId: 'destinationId',
+  userId: 'userId',
+  rating: 'rating',
+  comment: 'comment',
+  isHidden: 'isHidden',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ItineraryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  destinationId: 'destinationId',
+  title: 'title',
+  totalDays: 'totalDays',
+  budgetEstimate: 'budgetEstimate',
+  travelStyle: 'travelStyle',
+  aiContextInput: 'aiContextInput',
+  aiGeneratedPlan: 'aiGeneratedPlan',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ItineraryDayScalarFieldEnum = {
+  id: 'id',
+  itineraryId: 'itineraryId',
+  dayNumber: 'dayNumber',
+  theme: 'theme'
+};
+
+exports.Prisma.ItineraryActivityScalarFieldEnum = {
+  id: 'id',
+  itineraryDayId: 'itineraryDayId',
+  name: 'name',
+  type: 'type',
+  cost: 'cost',
+  location: 'location',
+  time: 'time',
+  order: 'order'
+};
+
+exports.Prisma.AIChatScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AIMessageScalarFieldEnum = {
+  id: 'id',
+  chatId: 'chatId',
+  role: 'role',
+  content: 'content',
+  meta: 'meta',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SavedDestinationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  destinationId: 'destinationId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SavedItineraryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  itineraryId: 'itineraryId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AnalyticsEventScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  eventType: 'eventType',
+  payload: 'payload',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -184,6 +305,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.user_role = exports.$Enums.user_role = {
   USER: 'USER',
@@ -196,11 +323,36 @@ exports.User_Status = exports.$Enums.User_Status = {
   BLOCKED: 'BLOCKED'
 };
 
+exports.DestinationCategory = exports.$Enums.DestinationCategory = {
+  beach: 'beach',
+  mountain: 'mountain',
+  city: 'city',
+  adventure: 'adventure',
+  cultural: 'cultural'
+};
+
+exports.MessageRole = exports.$Enums.MessageRole = {
+  user: 'user',
+  assistant: 'assistant',
+  system: 'system'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Destination: 'Destination',
+  DestinationImage: 'DestinationImage',
+  Review: 'Review',
+  Itinerary: 'Itinerary',
+  ItineraryDay: 'ItineraryDay',
+  ItineraryActivity: 'ItineraryActivity',
+  AIChat: 'AIChat',
+  AIMessage: 'AIMessage',
+  SavedDestination: 'SavedDestination',
+  SavedItinerary: 'SavedItinerary',
+  AnalyticsEvent: 'AnalyticsEvent'
 };
 
 /**

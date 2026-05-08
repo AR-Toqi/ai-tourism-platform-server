@@ -74,9 +74,13 @@ export const auth = betterAuth({
             return;
           }
 
-          // Admin check: Skip sending verification OTP for ADMIN role
+          // Admin check: Skip sending verification OTP for ADMIN role and auto-verify
           if (user && user.role === user_role.ADMIN) {
-            console.log(`User with email ${email} is an admin. Skipping sending verification OTP.`);
+            console.log(`User with email ${email} is an admin. Auto-verifying email and skipping OTP.`);
+            await prisma.user.update({
+              where: { email },
+              data: { emailVerified: true }
+            });
             return;
           }
 

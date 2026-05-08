@@ -32,6 +32,7 @@ interface EnvConfig {
         FROM_EMAIL: string;
         FROM_NAME: string;
     };
+    GEMINI_API_KEY: string;
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -60,6 +61,7 @@ const loadEnvVariables = (): EnvConfig => {
         'BREVO_API_KEY',
         'BREVO_FROM_EMAIL',
         'BREVO_FROM_NAME',
+        'GEMINI_API_KEY',
     ];
 
     requireEnvVariable.forEach((variable) => {
@@ -97,6 +99,7 @@ const loadEnvVariables = (): EnvConfig => {
             FROM_EMAIL: process.env.BREVO_FROM_EMAIL as string,
             FROM_NAME: process.env.BREVO_FROM_NAME as string,
         },
+        GEMINI_API_KEY: process.env.GEMINI_API_KEY as string,
     };
 };
 
