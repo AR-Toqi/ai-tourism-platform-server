@@ -6,10 +6,12 @@ import { ItineraryRoutes } from '../modules/itinerary/itinerary.route';
 import { ReviewRoutes } from '../modules/review/review.route';
 import { SavedRoutes } from '../modules/saved/saved.route';
 import { AIChatRoutes } from '../modules/aiChat/aiChat.route';
+import { AdminRoutes } from '../modules/admin/admin.route';
 
 const router: Router = Router();
 
 const moduleRoutes = [
+  { path: '/admin', route: AdminRoutes },
   { path: '/auth', route: authRoutes },
   { path: '/users', route: userRoutes },
   { path: '/destinations', route: DestinationRoutes },
