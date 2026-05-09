@@ -7,6 +7,7 @@ import { ReviewRoutes } from '../modules/review/review.route';
 import { SavedRoutes } from '../modules/saved/saved.route';
 import { AIChatRoutes } from '../modules/aiChat/aiChat.route';
 import { AdminRoutes } from '../modules/admin/admin.route';
+import { ContentManagerRoutes } from '../modules/content-manager/content-manager.route';
 
 const router: Router = Router();
 
@@ -19,6 +20,7 @@ const moduleRoutes = [
   { path: '/reviews', route: ReviewRoutes },
   { path: '/saved', route: SavedRoutes },
   { path: '/ai-chat', route: AIChatRoutes },
+  { path: '/content-manager', route: ContentManagerRoutes },
 ];
 
 moduleRoutes.forEach((route) => {

@@ -3,6 +3,7 @@ import { UserController } from './user.controller';
 import requireAuth from '../../middlewares/checkAuth';
 import validateRequest from '../../middlewares/validateRequest';
 import { UserValidation } from './user.validation';
+import { upload } from '../../utils/multer';
 
 const router = Router();
 
@@ -15,6 +16,7 @@ router.get(
 router.patch(
   '/me',
   requireAuth(),
+  upload.single('image'),
   validateRequest(UserValidation.updateProfileZodSchema),
   UserController.updateMyProfile
 );

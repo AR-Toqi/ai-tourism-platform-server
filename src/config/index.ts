@@ -33,6 +33,11 @@ interface EnvConfig {
         FROM_NAME: string;
     };
     GEMINI_API_KEY: string;
+    CLOUDINARY: {
+        CLOUD_NAME: string;
+        API_KEY: string;
+        API_SECRET: string;
+    };
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -62,6 +67,9 @@ const loadEnvVariables = (): EnvConfig => {
         'BREVO_FROM_EMAIL',
         'BREVO_FROM_NAME',
         'GEMINI_API_KEY',
+        'CLOUDINARY_CLOUD_NAME',
+        'CLOUDINARY_API_KEY',
+        'CLOUDINARY_API_SECRET',
     ];
 
     requireEnvVariable.forEach((variable) => {
@@ -100,6 +108,11 @@ const loadEnvVariables = (): EnvConfig => {
             FROM_NAME: process.env.BREVO_FROM_NAME as string,
         },
         GEMINI_API_KEY: process.env.GEMINI_API_KEY as string,
+        CLOUDINARY: {
+            CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME as string,
+            API_KEY: process.env.CLOUDINARY_API_KEY as string,
+            API_SECRET: process.env.CLOUDINARY_API_SECRET as string,
+        },
     };
 };
 

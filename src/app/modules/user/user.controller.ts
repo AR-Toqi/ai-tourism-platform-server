@@ -17,7 +17,8 @@ const getMe = catchAsync(async (req, res) => {
 
 const updateMyProfile = catchAsync(async (req, res) => {
   const user = (req as any).user;
-  const result = await UserService.updateMyProfile(user.id, req.body);
+  const filePath = req.file ? req.file.path : undefined;
+  const result = await UserService.updateMyProfile(user.id, req.body, filePath);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
