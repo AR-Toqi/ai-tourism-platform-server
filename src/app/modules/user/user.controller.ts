@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 
 const getMe = catchAsync(async (req, res) => {
   const user = (req as any).user;
-  const result = await UserService.getMe(user.id);
+  const result = await UserService.getMe(user.userId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -18,7 +18,7 @@ const getMe = catchAsync(async (req, res) => {
 const updateMyProfile = catchAsync(async (req, res) => {
   const user = (req as any).user;
   const filePath = req.file ? req.file.path : undefined;
-  const result = await UserService.updateMyProfile(user.id, req.body, filePath);
+  const result = await UserService.updateMyProfile(user.userId, req.body, filePath);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -30,7 +30,7 @@ const updateMyProfile = catchAsync(async (req, res) => {
 
 const deleteMe = catchAsync(async (req, res) => {
   const user = (req as any).user;
-  const result = await UserService.deleteMe(user.id);
+  const result = await UserService.deleteMe(user.userId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

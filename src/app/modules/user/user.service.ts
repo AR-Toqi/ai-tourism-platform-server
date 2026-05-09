@@ -7,10 +7,6 @@ import { cloudinaryUpload, cloudinaryDelete, extractPublicId } from '../../utils
 const getMe = async (userId: string) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    include: {
-      sessions: false,
-      accounts: false,
-    },
   });
 
   if (!user) {

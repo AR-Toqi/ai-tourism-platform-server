@@ -16,16 +16,6 @@ interface EnvConfig {
     BETTER_AUTH_SESSION_TOKEN_EXPIRES_IN: string;
     ADMIN_EMAIL: string;
     ADMIN_PASSWORD: string;
-    EMAIL_SENDER: {
-        SMTP_HOST: string;
-        SMTP_PORT: string;
-        SMTP_USER: string;
-        SMTP_PASS: string;
-        SMTP_FROM: string;
-    };
-    GOOGLE_CLIENT_ID: string;
-    GOOGLE_CLIENT_SECRET: string;
-    GOOGLE_CALLBACK_URL: string;
     FRONTEND_URL: string;
     BREVO: {
         API_KEY: string;
@@ -54,14 +44,6 @@ const loadEnvVariables = (): EnvConfig => {
         'BETTER_AUTH_SESSION_TOKEN_EXPIRES_IN',
         'ADMIN_EMAIL',
         'ADMIN_PASSWORD',
-        'EMAIL_SENDER_SMTP_HOST',
-        'EMAIL_SENDER_SMTP_PORT',
-        'EMAIL_SENDER_SMTP_USER',
-        'EMAIL_SENDER_SMTP_PASS',
-        'EMAIL_SENDER_SMTP_FROM',
-        'GOOGLE_CLIENT_ID',
-        'GOOGLE_CLIENT_SECRET',
-        'GOOGLE_CALLBACK_URL',
         'FRONTEND_URL',
         'BREVO_API_KEY',
         'BREVO_FROM_EMAIL',
@@ -91,22 +73,12 @@ const loadEnvVariables = (): EnvConfig => {
         BETTER_AUTH_SESSION_TOKEN_EXPIRES_IN: process.env.BETTER_AUTH_SESSION_TOKEN_EXPIRES_IN as string,
         ADMIN_EMAIL: process.env.ADMIN_EMAIL as string,
         ADMIN_PASSWORD: process.env.ADMIN_PASSWORD as string,
-        EMAIL_SENDER: {
-            SMTP_HOST: process.env.EMAIL_SENDER_SMTP_HOST as string,
-            SMTP_PORT: process.env.EMAIL_SENDER_SMTP_PORT as string,
-            SMTP_USER: process.env.EMAIL_SENDER_SMTP_USER as string,
-            SMTP_PASS: process.env.EMAIL_SENDER_SMTP_PASS as string,
-            SMTP_FROM: process.env.EMAIL_SENDER_SMTP_FROM as string,
-        },
-        GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID as string,
-        GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET as string,
-        GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL as string,
-        FRONTEND_URL: process.env.FRONTEND_URL as string,
         BREVO: {
             API_KEY: process.env.BREVO_API_KEY as string,
             FROM_EMAIL: process.env.BREVO_FROM_EMAIL as string,
             FROM_NAME: process.env.BREVO_FROM_NAME as string,
         },
+        FRONTEND_URL: process.env.FRONTEND_URL as string,
         GEMINI_API_KEY: process.env.GEMINI_API_KEY as string,
         CLOUDINARY: {
             CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME as string,

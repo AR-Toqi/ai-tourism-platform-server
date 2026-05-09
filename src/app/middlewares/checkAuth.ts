@@ -34,9 +34,9 @@ const requireAuth = (...requiredRoles: user_role[]) => {
         token = authHeader.split(' ')[1] || '';
       }
 
-      // If no header token, try to get from better-auth.session_token cookie
+      // If no header token, try to get from cookies
       if (!token || token.trim() === '') {
-        token = req.cookies['better-auth.session_token'] || '';
+        token = req.cookies['accessToken'] || req.cookies['better-auth.session_token'] || '';
       }
 
       if (token && token.trim() !== '') {
