@@ -83,6 +83,7 @@ const createItinerary = async (payload: ICreateItinerary, userId: string) => {
                 totalDays: payload.totalDays,
                 budgetEstimate: payload.budgetEstimate,
                 travelStyle: payload.travelStyle,
+                startDate: payload.startDate ? new Date(payload.startDate) : null,
                 aiContextInput: payload as any,
                 aiGeneratedPlan: aiGeneratedPlan as any,
             },

@@ -148,6 +148,8 @@ model Itinerary {
   totalDays       Int
   budgetEstimate  Decimal          @db.Decimal(10, 2)
   travelStyle     String
+  startDate       DateTime? // When the trip starts, used for reminders
+  reminderSent    Boolean          @default(false)
   aiContextInput  Json // Stores the prompts/preferences used
   aiGeneratedPlan Json // The raw JSON returned by AI
   days            ItineraryDay[]

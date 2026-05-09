@@ -8,6 +8,7 @@ const createItineraryValidationSchema = z.object({
         budgetEstimate: z.number({ message: 'Budget estimate must be a number' }),
         travelStyle: z.string().min(1, 'Travel style is required'),
         preferences: z.string().optional(),
+        startDate: z.string().datetime({ offset: true }).optional(),
     }),
 });
 

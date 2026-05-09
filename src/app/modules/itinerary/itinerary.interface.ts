@@ -29,4 +29,5 @@ export interface ICreateItinerary {
     budgetEstimate: number;
     travelStyle: string;
     preferences?: string;
+    startDate?: string; // ISO date string
 }
