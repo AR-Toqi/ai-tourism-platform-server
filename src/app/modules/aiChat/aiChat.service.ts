@@ -1,5 +1,5 @@
 import { prisma } from "../../../lib/prisma";
-import { MessageRole } from "../../../generated/prisma";
+import { MessageRole } from "../../../../generated/prisma";
 import { genAI } from "../../../config/gemini";
 import httpStatus from "http-status";
 import AppError from "../../errors/AppError";

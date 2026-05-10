@@ -1,14 +1,24 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-    entry: ['src/server.ts'],       // your entry file
-    format: ['esm'],                // ESM output 
+    entry: ['src/server.ts'],
+    format: ['esm'],
+    platform: 'node',
+    target: 'node20',
     outDir: 'dist',
-    clean: true,                    // clear dist before build
-    splitting: false,               // not needed for backend
-    sourcemap: false,               // not needed in production
+    clean: true,
+    minify: true,
+    shims: true,
     external: [
+        'pg-native',
         '@prisma/client',
-        '../src/generated/prisma'     // custom prisma path
-    ]
+        '@prisma/client-runtime-utils',
+        './generated/prisma'
+    ],
+    banner: {
+        js: `
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+        `,
+    },
 })

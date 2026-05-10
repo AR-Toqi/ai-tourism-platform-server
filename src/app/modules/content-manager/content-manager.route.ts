@@ -3,7 +3,7 @@ import { ContentManagerController } from './content-manager.controller';
 import { ContentManagerValidation } from './content-manager.validation';
 import validateRequest from '../../middlewares/validateRequest';
 import requireAuth from '../../middlewares/checkAuth';
-import { user_role } from '../../../generated/prisma';
+import { user_role } from '../../../../generated/prisma';
 import { upload } from '../../utils/multer';
 
 const router: Router = Router();

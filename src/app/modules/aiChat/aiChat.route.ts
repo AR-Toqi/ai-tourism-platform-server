@@ -3,7 +3,7 @@ import validateRequest from '../../middlewares/validateRequest';
 import { AIChatValidation } from './aiChat.validation';
 import { AIChatController } from './aiChat.controller';
 import requireAuth from '../../middlewares/checkAuth';
-import { user_role } from '../../../generated/prisma';
+import { user_role } from '../../../../generated/prisma';
 
 const router: Router = Router();
 

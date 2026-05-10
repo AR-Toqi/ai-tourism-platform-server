@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DestinationCategory } from '../../../generated/prisma';
+import { DestinationCategory } from '../../../../generated/prisma';
 
 const updateDestinationValidationSchema = z.object({
     body: z.object({

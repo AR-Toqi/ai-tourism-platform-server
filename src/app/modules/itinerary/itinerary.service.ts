@@ -1,4 +1,5 @@
 import { prisma } from "../../../lib/prisma";
+import { Prisma } from "../../../../generated/prisma";
 import httpStatus from "http-status";
 import AppError from "../../errors/AppError";
 import { IAIPlanOutput, ICreateItinerary, IPromptParseOutput } from "./itinerary.interface";
@@ -90,7 +91,7 @@ const createItinerary = async (payload: ICreateItinerary, userId: string) => {
     const aiGeneratedPlan = await generateItineraryWithAI(payload);
 
     try {
-        const result = await prisma.$transaction(async (tx) => {
+        const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
             const itinerary = await tx.itinerary.create({
                 data: {
                     userId,

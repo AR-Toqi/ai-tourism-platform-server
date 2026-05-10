@@ -1,4 +1,4 @@
-import { DestinationCategory } from "../../../generated/prisma";
+import { DestinationCategory } from "../../../../generated/prisma";
 
 export const DESTINATION_CATEGORIES: DestinationCategory[] = [
     "beach",

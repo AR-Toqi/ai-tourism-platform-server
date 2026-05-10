@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import requireAuth from '../../middlewares/checkAuth';
-import { user_role } from '../../../generated/prisma';
+import { user_role } from '../../../../generated/prisma';
 import validateRequest from '../../middlewares/validateRequest';
 import { AdminValidation } from './admin.validation';
 import { AdminController } from './admin.controller';

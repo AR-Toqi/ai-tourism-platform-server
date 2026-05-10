@@ -3,7 +3,7 @@ import httpStatus from 'http-status';
 import ApiError from '../errors/AppError';
 import catchAsync from '../utils/catchAsync';
 import { auth } from '../../lib/auth';
-import { user_role } from '../../generated/prisma';
+import { user_role } from '../../../generated/prisma';
 import { tokenHelpers } from '../utils/token';
 
 const getAuthenticatedUser = async (req: Request) => {

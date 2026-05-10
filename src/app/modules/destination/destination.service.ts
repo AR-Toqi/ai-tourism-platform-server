@@ -1,4 +1,4 @@
-import { Destination, Prisma } from "../../../generated/prisma";
+import { Destination, Prisma } from "../../../../generated/prisma";
 import { prisma } from "../../../lib/prisma";
 import slugify from "slugify";
 import { destinationSearchableFields } from "./destination.constant";
@@ -119,7 +119,7 @@ const getAllDestinations = async (query: IDestinationFilterRequest & { includeDr
 
 const getSingleDestination = async (slug: string, includeDrafts = false) => {
     const whereConditions: Prisma.DestinationWhereInput = { slug };
-    
+
     if (!includeDrafts) {
         whereConditions.isPublished = true;
     }

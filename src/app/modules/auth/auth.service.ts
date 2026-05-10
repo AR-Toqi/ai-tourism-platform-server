@@ -5,7 +5,7 @@ import { tokenHelpers } from '../../utils/token';
 import { IRegister, ILogin, IChangePassword } from './auth.interface';
 import { prisma } from '../../../lib/prisma';
 import { JwtPayload } from 'jsonwebtoken';
-import { User_Status } from '../../../generated/prisma';
+import { User_Status } from '../../../../generated/prisma';
 
 const register = async (payload: IRegister) => {
   const result = await auth.api.signUpEmail({

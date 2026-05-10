@@ -3,7 +3,7 @@ import validateRequest from '../../middlewares/validateRequest';
 import { DestinationValidation } from './destination.validation';
 import { DestinationController } from './destination.controller';
 import requireAuth, { optionalAuth } from '../../middlewares/checkAuth';
-import { user_role } from '../../../generated/prisma';
+import { user_role } from '../../../../generated/prisma';
 
 const router: Router = Router();
 

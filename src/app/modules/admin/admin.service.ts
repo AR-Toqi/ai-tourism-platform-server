@@ -1,7 +1,7 @@
 import { prisma } from "../../../lib/prisma";
 import httpStatus from "http-status";
 import AppError from "../../errors/AppError";
-import { User_Status, user_role } from "../../../generated/prisma";
+import { User_Status, user_role } from "../../../../generated/prisma";
 
 const getNormalUsers = async () => {
     return await prisma.user.findMany({
@@ -60,7 +60,7 @@ const changeUserRole = async (userId: string, role: user_role) => {
 };
 
 const softDeleteUser = async (userId: string) => {
-    const user = await prisma.user.findUnique({ 
+    const user = await prisma.user.findUnique({
         where: { id: userId },
         include: { itineraries: true } // Checking if they have generated itineraries
     });
@@ -83,7 +83,7 @@ const softDeleteUser = async (userId: string) => {
 
     return await prisma.user.update({
         where: { id: userId },
-        data: { 
+        data: {
             isDeleted: true,
             deletedAt: new Date()
         }

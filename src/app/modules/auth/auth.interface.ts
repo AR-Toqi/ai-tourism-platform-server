@@ -1,4 +1,4 @@
-import { user_role } from '../../../generated/prisma';
+import { user_role } from '../../../../generated/prisma';
 
 export interface IRegister {
   name: string;

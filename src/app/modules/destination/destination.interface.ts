@@ -1,4 +1,4 @@
-import { DestinationCategory } from "../../../generated/prisma";
+import { DestinationCategory } from "../../../../generated/prisma";
 
 export interface IDestinationImage {
     url: string;
