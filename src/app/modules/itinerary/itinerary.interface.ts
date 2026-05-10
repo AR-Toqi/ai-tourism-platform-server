@@ -31,3 +31,12 @@ export interface ICreateItinerary {
     preferences?: string;
     startDate?: string; // ISO date string
 }
+
+export interface IPromptParseOutput {
+    destination?: string;
+    totalDays?: number;
+    budgetEstimate?: number;
+    travelStyle?: string;
+    preferences?: string;
+}
+

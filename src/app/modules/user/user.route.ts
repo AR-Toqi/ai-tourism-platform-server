@@ -13,6 +13,13 @@ router.get(
   UserController.getMe
 );
 
+router.get(
+  '/stats',
+  requireAuth(),
+  UserController.getStats
+);
+
+
 router.patch(
   '/me',
   requireAuth(),

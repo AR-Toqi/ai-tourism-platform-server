@@ -46,6 +46,8 @@ const getAllDestinations = async (query: IDestinationFilterRequest) => {
         isPublished: true,
     };
 
+
+
     if (searchTerm) {
         whereConditions.OR = destinationSearchableFields.map((field) => ({
             [field]: {

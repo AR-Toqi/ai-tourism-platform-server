@@ -5,7 +5,8 @@ import { UserService } from './user.service';
 
 const getMe = catchAsync(async (req, res) => {
   const user = (req as any).user;
-  const result = await UserService.getMe(user.userId);
+  const userId = user.userId || user.id;
+  const result = await UserService.getMe(userId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -17,8 +18,10 @@ const getMe = catchAsync(async (req, res) => {
 
 const updateMyProfile = catchAsync(async (req, res) => {
   const user = (req as any).user;
+  const userId = user.userId || user.id;
   const filePath = req.file ? req.file.path : undefined;
-  const result = await UserService.updateMyProfile(user.userId, req.body, filePath);
+  const result = await UserService.updateMyProfile(userId, req.body, filePath);
+
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -30,7 +33,8 @@ const updateMyProfile = catchAsync(async (req, res) => {
 
 const deleteMe = catchAsync(async (req, res) => {
   const user = (req as any).user;
-  const result = await UserService.deleteMe(user.userId);
+  const userId = user.userId || user.id;
+  const result = await UserService.deleteMe(userId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -40,8 +44,23 @@ const deleteMe = catchAsync(async (req, res) => {
   });
 });
 
+const getStats = catchAsync(async (req, res) => {
+  const user = (req as any).user;
+  const userId = user.userId || user.id;
+  const result = await UserService.getStats(userId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User statistics retrieved successfully',
+    data: result,
+  });
+});
+
 export const UserController = {
   getMe,
   updateMyProfile,
   deleteMe,
+  getStats,
 };
+

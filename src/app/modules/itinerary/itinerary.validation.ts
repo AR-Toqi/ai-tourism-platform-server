@@ -12,6 +12,14 @@ const createItineraryValidationSchema = z.object({
     }),
 });
 
+const parsePromptValidationSchema = z.object({
+    body: z.object({
+        prompt: z.string().min(1, 'Prompt is required'),
+    }),
+});
+
 export const ItineraryValidation = {
     createItineraryValidationSchema,
+    parsePromptValidationSchema,
 };
+

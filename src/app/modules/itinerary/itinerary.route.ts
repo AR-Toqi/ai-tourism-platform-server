@@ -21,9 +21,22 @@ router.get(
 );
 
 router.get(
+    '/trending-destinations',
+    ItineraryController.getTrendingDestinations
+);
+
+router.post(
+    '/parse-prompt',
+    requireAuth(user_role.USER, user_role.ADMIN, user_role.CONTENT_MANAGER),
+    validateRequest(ItineraryValidation.parsePromptValidationSchema),
+    ItineraryController.parsePrompt
+);
+
+router.get(
     '/:id',
     requireAuth(user_role.USER, user_role.ADMIN, user_role.CONTENT_MANAGER),
     ItineraryController.getSingleItinerary
 );
+
 
 export const ItineraryRoutes: Router = router;

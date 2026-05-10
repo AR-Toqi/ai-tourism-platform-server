@@ -48,23 +48,42 @@ const updateMyProfile = async (userId: string, payload: Partial<{ name: string; 
   return updatedUser;
 };
 
-const deleteMe = async (userId: string) => {
-  const user = await prisma.user.findUnique({ where: { id: userId } });
-
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
-  }
-
-  const deletedUser = await prisma.user.delete({
-    where: { id: userId },
+const deleteMe = async (id: string) => {
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      isDeleted: true,
+    },
   });
-
-  return deletedUser;
+  return result;
 };
 
+
+const getStats = async (userId: string) => {
+  const [itinerariesCount, savedDestinationsCount, reviewsCount] = await Promise.all([
+    prisma.itinerary.count({
+      where: { userId }
+    }),
+    prisma.savedDestination.count({
+      where: { userId }
+    }),
+    prisma.review.count({
+      where: { userId }
+    })
+  ]);
+
+  return {
+    itinerariesCount,
+    savedDestinationsCount,
+    reviewsCount
+  };
+};
 
 export const UserService = {
   getMe,
   updateMyProfile,
-  deleteMe
+  deleteMe,
+  getStats,
 };

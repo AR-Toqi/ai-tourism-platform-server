@@ -102,23 +102,28 @@ const logoutUser = catchAsync(async (req: Request, res: Response) => {
     sessionToken = req.headers.authorization.split(' ')[1] || '';
   }
 
-  if (!sessionToken) {
-    throw new AppError(httpStatus.UNAUTHORIZED, 'Session token not found');
+  // If we have a token, try to invalidate it on the server
+  if (sessionToken) {
+    try {
+      await AuthService.logoutUser(sessionToken);
+    } catch (error) {
+      console.error("Server-side logout failed, but proceeding to clear cookies:", error);
+    }
   }
 
-  const result = await AuthService.logoutUser(sessionToken);
+  // Always clear all cookies
+  tokenHelpers.clearAllCookies(res);
 
-  CookieUtils.clearCookie(res, 'accessToken');
-  CookieUtils.clearCookie(res, 'refreshToken');
-  CookieUtils.clearCookie(res, 'better-auth.session_token');
+
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'User logged out successfully',
-    data: result,
+    data: null,
   });
 });
+
 
 const verifyEmail = catchAsync(async (req: Request, res: Response) => {
   await AuthService.verifyEmail(req.body);
