@@ -145,6 +145,8 @@ const createItinerary = async (payload: ICreateItinerary, userId: string) => {
                     }
                 },
             });
+        }, {
+            timeout: 20000
         });
 
         return result;
@@ -172,9 +174,16 @@ const getMyItineraries = async (userId: string) => {
     return result;
 };
 
-const getSingleItinerary = async (id: string, userId: string) => {
+const getSingleItinerary = async (id: string, userId: string, isAdmin = false) => {
+    const whereConditions: any = { id };
+    
+    // Only filter by userId if NOT an admin
+    if (!isAdmin) {
+        whereConditions.userId = userId;
+    }
+
     const result = await prisma.itinerary.findUnique({
-        where: { id, userId },
+        where: whereConditions,
         include: {
             destination: true,
             days: {

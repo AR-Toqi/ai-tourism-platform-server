@@ -6,7 +6,7 @@ import { DestinationService } from "./destination.service";
 
 const createDestination = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
-    const result = await DestinationService.createDestination(req.body, user.id);
+    const result = await DestinationService.createDestination(req.body, user.userId);
 
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
@@ -17,7 +17,13 @@ const createDestination = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllDestinations = catchAsync(async (req: Request, res: Response) => {
-    const result = await DestinationService.getAllDestinations(req.query);
+    const user = (req as any).user;
+    const isAdmin = user && (user.role === 'ADMIN' || user.role === 'CONTENT_MANAGER');
+
+    const result = await DestinationService.getAllDestinations({
+        ...req.query,
+        includeDrafts: isAdmin
+    });
 
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -30,7 +36,10 @@ const getAllDestinations = catchAsync(async (req: Request, res: Response) => {
 
 const getSingleDestination = catchAsync(async (req: Request, res: Response) => {
     const { slug } = req.params;
-    const result = await DestinationService.getSingleDestination(slug as string);
+    const user = (req as any).user;
+    const isAdmin = user && (user.role === 'ADMIN' || user.role === 'CONTENT_MANAGER');
+
+    const result = await DestinationService.getSingleDestination(slug as string, isAdmin);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,

@@ -34,7 +34,9 @@ const getSingleItinerary = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
     const userId = user.userId || user.id;
     const { id } = req.params;
-    const result = await ItineraryService.getSingleItinerary(id as string, userId);
+    const isAdmin = user.role === 'ADMIN' || user.role === 'CONTENT_MANAGER';
+    
+    const result = await ItineraryService.getSingleItinerary(id as string, userId, isAdmin);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,

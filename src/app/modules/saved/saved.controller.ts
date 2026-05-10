@@ -6,8 +6,9 @@ import { SavedService } from "./saved.service";
 
 const toggleSavedDestination = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
+    const userId = user.id || user.userId;
     const { destinationId } = req.body;
-    const result = await SavedService.toggleSavedDestination(destinationId, user.id);
+    const result = await SavedService.toggleSavedDestination(destinationId, userId);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -19,8 +20,9 @@ const toggleSavedDestination = catchAsync(async (req: Request, res: Response) =>
 
 const toggleSavedItinerary = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
+    const userId = user.id || user.userId;
     const { itineraryId } = req.body;
-    const result = await SavedService.toggleSavedItinerary(itineraryId, user.id);
+    const result = await SavedService.toggleSavedItinerary(itineraryId, userId);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -32,7 +34,8 @@ const toggleSavedItinerary = catchAsync(async (req: Request, res: Response) => {
 
 const getMySavedItems = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
-    const result = await SavedService.getMySavedItems(user.id);
+    const userId = user.id || user.userId;
+    const result = await SavedService.getMySavedItems(userId);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,

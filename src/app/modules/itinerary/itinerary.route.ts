@@ -9,14 +9,14 @@ const router: Router = Router();
 
 router.post(
     '/',
-    requireAuth(user_role.USER, user_role.ADMIN, user_role.CONTENT_MANAGER),
+    requireAuth(user_role.USER, user_role.ADMIN),
     validateRequest(ItineraryValidation.createItineraryValidationSchema),
     ItineraryController.createItinerary
 );
 
 router.get(
     '/my-itineraries',
-    requireAuth(user_role.USER, user_role.ADMIN, user_role.CONTENT_MANAGER),
+    requireAuth(user_role.USER, user_role.ADMIN),
     ItineraryController.getMyItineraries
 );
 
@@ -27,14 +27,14 @@ router.get(
 
 router.post(
     '/parse-prompt',
-    requireAuth(user_role.USER, user_role.ADMIN, user_role.CONTENT_MANAGER),
+    requireAuth(user_role.USER, user_role.ADMIN),
     validateRequest(ItineraryValidation.parsePromptValidationSchema),
     ItineraryController.parsePrompt
 );
 
 router.get(
     '/:id',
-    requireAuth(user_role.USER, user_role.ADMIN, user_role.CONTENT_MANAGER),
+    requireAuth(user_role.USER, user_role.ADMIN),
     ItineraryController.getSingleItinerary
 );
 

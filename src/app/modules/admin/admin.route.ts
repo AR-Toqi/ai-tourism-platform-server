@@ -68,4 +68,10 @@ router.get(
     AdminController.getItineraryById
 );
 
+router.get(
+    '/reviews',
+    requireAuth(user_role.ADMIN),
+    AdminController.getAllReviews
+);
+
 export const AdminRoutes: Router = router;

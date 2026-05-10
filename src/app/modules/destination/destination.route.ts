@@ -2,7 +2,7 @@ import { Router } from 'express';
 import validateRequest from '../../middlewares/validateRequest';
 import { DestinationValidation } from './destination.validation';
 import { DestinationController } from './destination.controller';
-import requireAuth from '../../middlewares/checkAuth';
+import requireAuth, { optionalAuth } from '../../middlewares/checkAuth';
 import { user_role } from '../../../generated/prisma';
 
 const router: Router = Router();
@@ -14,8 +14,8 @@ router.post(
     DestinationController.createDestination
 );
 
-router.get('/', DestinationController.getAllDestinations);
+router.get('/', optionalAuth(), DestinationController.getAllDestinations);
 
-router.get('/:slug', DestinationController.getSingleDestination);
+router.get('/:slug', optionalAuth(), DestinationController.getSingleDestination);
 
 export const DestinationRoutes: Router = router;

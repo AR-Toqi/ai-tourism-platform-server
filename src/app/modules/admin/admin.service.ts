@@ -11,6 +11,7 @@ const getNormalUsers = async () => {
             name: true,
             email: true,
             status: true,
+            role: true,
             createdAt: true,
             image: true,
         },
@@ -26,6 +27,7 @@ const getContentManagers = async () => {
             name: true,
             email: true,
             status: true,
+            role: true,
             createdAt: true,
             image: true,
         },
@@ -151,6 +153,16 @@ const getDashboardStats = async () => {
     };
 };
 
+const getAllReviews = async () => {
+    return await prisma.review.findMany({
+        include: {
+            user: { select: { name: true, email: true } },
+            destination: { select: { name: true } }
+        },
+        orderBy: { createdAt: 'desc' }
+    });
+};
+
 export const AdminService = {
     getNormalUsers,
     getContentManagers,
@@ -161,4 +173,5 @@ export const AdminService = {
     getAllItineraries,
     getItineraryById,
     getDashboardStats,
+    getAllReviews,
 };

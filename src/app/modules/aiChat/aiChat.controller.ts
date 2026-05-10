@@ -6,7 +6,8 @@ import { AIChatService } from "./aiChat.service";
 
 const createChat = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
-    const result = await AIChatService.createChat(req.body, user.id);
+    const userId = user.id || user.userId;
+    const result = await AIChatService.createChat(req.body, userId);
 
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
@@ -18,7 +19,8 @@ const createChat = catchAsync(async (req: Request, res: Response) => {
 
 const sendMessage = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
-    const result = await AIChatService.sendMessage(req.body, user.id);
+    const userId = user.id || user.userId;
+    const result = await AIChatService.sendMessage(req.body, userId);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -30,7 +32,8 @@ const sendMessage = catchAsync(async (req: Request, res: Response) => {
 
 const getMyChats = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
-    const result = await AIChatService.getMyChats(user.id);
+    const userId = user.id || user.userId;
+    const result = await AIChatService.getMyChats(userId);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,
@@ -42,8 +45,9 @@ const getMyChats = catchAsync(async (req: Request, res: Response) => {
 
 const getChatMessages = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
+    const userId = user.id || user.userId;
     const { chatId } = req.params;
-    const result = await AIChatService.getChatMessages(chatId as string, user.id);
+    const result = await AIChatService.getChatMessages(chatId as string, userId);
 
     if (!result) {
         return sendResponse(res, {

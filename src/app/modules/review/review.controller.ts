@@ -6,7 +6,8 @@ import { ReviewService } from "./review.service";
 
 const createReview = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
-    const result = await ReviewService.createReview(req.body, user.id);
+    const userId = user.id || user.userId;
+    const result = await ReviewService.createReview(req.body, userId);
 
     sendResponse(res, {
         statusCode: httpStatus.CREATED,
@@ -30,8 +31,9 @@ const getDestinationReviews = catchAsync(async (req: Request, res: Response) => 
 
 const deleteReview = catchAsync(async (req: Request, res: Response) => {
     const user = (req as any).user;
+    const userId = user.id || user.userId;
     const { id } = req.params;
-    const result = await ReviewService.deleteReview(id as string, user.id, user.role);
+    const result = await ReviewService.deleteReview(id as string, userId, user.role);
 
     sendResponse(res, {
         statusCode: httpStatus.OK,
