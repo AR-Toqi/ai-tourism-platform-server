@@ -15,7 +15,7 @@ const app: Application = express();
 // Security and Logging
 app.use(helmet());
 app.use(cors({
-  origin: [envConfig.FRONTEND_URL, envConfig.BETTER_AUTH_URL] as string[],
+  origin: [envConfig.FRONTEND_URL, envConfig.BETTER_AUTH_URL, 'http://localhost:3000'] as string[],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],

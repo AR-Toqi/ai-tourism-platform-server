@@ -129,7 +129,7 @@ export const auth = betterAuth({
   trustedOrigins: [envConfig.BETTER_AUTH_URL, envConfig.FRONTEND_URL],
   advanced: {
     // disableCSRFCheck: true,
-    useSecureCookies: false,
+    useSecureCookies: envConfig.NODE_ENV === "production",
     cookies: {
       state: {
         attributes: {
