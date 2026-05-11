@@ -20,7 +20,7 @@ const createDestinationValidationSchema = z.object({
         longitude: z.number().optional(),
         budgetMin: z.number({ message: 'Minimum budget must be a number' }),
         budgetMax: z.number({ message: 'Maximum budget must be a number' }),
-        coverImage: z.string().url('Invalid cover image URL'),
+        coverImage: z.string().url('Invalid cover image URL').optional(),
         isPublished: z.boolean().optional(),
         images: z.array(createDestinationImageValidationSchema).optional(),
     }),

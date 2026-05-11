@@ -4,6 +4,23 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { ContentManagerService } from './content-manager.service';
 import AppError from '../../errors/AppError';
+import { DestinationService } from '../destination/destination.service';
+
+const getDestinationById = catchAsync(async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const result = await DestinationService.getDestinationById(id as string, true);
+
+    if (!result) {
+        throw new AppError(httpStatus.NOT_FOUND, 'Destination not found');
+    }
+
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Destination fetched successfully',
+        data: result,
+    });
+});
 
 const updateDestinationDetails = catchAsync(async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -79,6 +96,7 @@ const deleteDestinationGalleryImage = catchAsync(async (req: Request, res: Respo
 });
 
 export const ContentManagerController = {
+    getDestinationById,
     updateDestinationDetails,
     updateDestinationCoverImage,
     addDestinationImages,

@@ -14,7 +14,7 @@ export interface ICreateDestination {
     description: string;
     budgetMin: number;
     budgetMax: number;
-    coverImage: string;
+    coverImage?: string;
     isPublished?: boolean;
     latitude?: number;
     longitude?: number;

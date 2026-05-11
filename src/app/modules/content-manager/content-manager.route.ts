@@ -11,6 +11,12 @@ const router: Router = Router();
 // Ensure all routes are protected by CONTENT_MANAGER (or ADMIN) role
 router.use(requireAuth(user_role.CONTENT_MANAGER, user_role.ADMIN));
 
+// Fetch single destination for editing
+router.get(
+    '/destinations/:id',
+    ContentManagerController.getDestinationById
+);
+
 // Update destination text details
 router.patch(
     '/destinations/:id',

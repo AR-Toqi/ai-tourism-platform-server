@@ -25,7 +25,7 @@ const createDestination = async (payload: ICreateDestination, userId: string) =>
             category: destinationData.category,
             budgetMin: destinationData.budgetMin,
             budgetMax: destinationData.budgetMax,
-            coverImage: destinationData.coverImage,
+            coverImage: destinationData.coverImage || '',
             isPublished: destinationData.isPublished ?? false,
             slug,
             user: {
@@ -161,8 +161,30 @@ const getSingleDestination = async (slug: string, includeDrafts = false) => {
     });
 };
 
+const getDestinationById = async (id: string, includeDrafts = false) => {
+    const whereConditions: Prisma.DestinationWhereInput = { id };
+
+    if (!includeDrafts) {
+        whereConditions.isPublished = true;
+    }
+
+    const result = await prisma.destination.findUnique({
+        where: { id },
+        include: {
+            images: true,
+        }
+    });
+
+    if (result && !includeDrafts && !result.isPublished) {
+        return null;
+    }
+
+    return result;
+};
+
 export const DestinationService = {
     createDestination,
     getAllDestinations,
     getSingleDestination,
+    getDestinationById,
 };
