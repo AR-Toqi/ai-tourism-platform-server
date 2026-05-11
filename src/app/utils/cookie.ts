@@ -8,11 +8,13 @@ const setCookie = (
   options?: CookieOptions
 ) => {
   const isProduction = envConfig.NODE_ENV === 'production';
+  const isLocalhost = envConfig.FRONTEND_URL.includes('localhost');
 
   const defaultOptions: CookieOptions = {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'none' : 'lax',
+    // Force cross-site support if we are testing from localhost to a deployed server
+    secure: isProduction || isLocalhost,
+    sameSite: (isProduction || isLocalhost) ? 'none' : 'lax',
     path: '/',
   };
 
@@ -25,11 +27,12 @@ const getCookie = (req: Request, key: string) => {
 
 const clearCookie = (res: Response, key: string, options?: CookieOptions) => {
   const isProduction = envConfig.NODE_ENV === 'production';
+  const isLocalhost = envConfig.FRONTEND_URL.includes('localhost');
 
   const defaultOptions: CookieOptions = {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction || isLocalhost,
+    sameSite: (isProduction || isLocalhost) ? 'none' : 'lax',
     path: '/',
   };
 
