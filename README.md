@@ -112,6 +112,3 @@ Full-Stack Developer & AI Enthusiast
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abdullah-ragib-toqi/)
 [![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/ar_toqi)
 
----
-
-*Designed for the discerning explorer. Built with AI precision.*
