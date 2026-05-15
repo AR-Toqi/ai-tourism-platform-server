@@ -9,8 +9,12 @@ import globalRouter from './app/routes';
 import { envConfig } from './config';
 import globalErrorHandler from './app/middlewares/error';
 import notFound from './app/middlewares/notFound';
+import { globalRateLimiter } from './app/middlewares/rateLimiter';
 
 const app: Application = express();
+
+// Rate Limiting
+app.use(globalRateLimiter);
 
 // Security and Logging
 app.use(helmet());

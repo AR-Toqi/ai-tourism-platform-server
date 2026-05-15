@@ -29,6 +29,7 @@ Wandr AI is a cutting-edge, AI-powered travel intelligence platform designed to 
 ### 🔐 Secure Foundation
 - **Role-Based Access Control (RBAC)**: Fine-grained permissions for Travelers, Content Managers, and Admins.
 - **Robust Auth**: Secure session-based authentication via Better Auth using HTTP-only cookies and social login support.
+- **Rate Limiting Protection**: Multi-layered rate limiting to prevent brute-force attacks on auth routes and protect AI resources from abuse.
 
 ---
 
@@ -47,6 +48,7 @@ Wandr AI is a cutting-edge, AI-powered travel intelligence platform designed to 
 - **Database**: [PostgreSQL](https://www.postgresql.org/)
 - **ORM**: [Prisma](https://www.prisma.io/)
 - **Auth**: [Better Auth](https://www.better-auth.com/)
+- **Security**: [Helmet](https://helmetjs.github.io/), [CORS](https://github.com/expressjs/cors), & [Express Rate Limit](https://github.com/express-rate-limit/express-rate-limit)
 - **AI Integration**: [OpenAI GPT-4o](https://openai.com/) & [Google Gemini Pro](https://deepmind.google/technologies/gemini/)
 
 ---
